@@ -16,8 +16,10 @@
 
 set -ev
 
-mkdir -p ~/bigtable
-if [ ! -f ~/bigtable/retry_server ]; then
+CIRCLE_CI_HOME= /var/code/gcp/test_utils/scripts/circleci/bigtable
+
+mkdir -p $CIRCLE_CI_HOME
+if [ ! -f ${CIRCLE_CI_HOME}/retry_server ]; then
     wget https://storage.googleapis.com/cloud-bigtable-test/retries/retry_server_linux.tar.gz
     tar -zxvf retry_server_linux.tar.gz -C ~/bigtable
     rm retry_server_linux.tar.gz
